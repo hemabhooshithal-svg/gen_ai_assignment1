@@ -1,1 +1,64 @@
 
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Budget Buddy – Money basics for your first salary</title>
+  <meta name="description" content="Ask a simple money question in plain words and get an explanation, an example and one thing to do today." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="top">
+      <div class="brand">
+        <span class="logo">₹</span>
+        <div>
+          <h1>Budget Buddy</h1>
+          <p>Money basics, in plain words</p>
+        </div>
+      </div>
+
+      <div class="opts">
+        <label class="sr" for="profile">I am a</label>
+        <select id="profile">
+          <option value="student">Student</option>
+          <option value="job">First-job earner</option>
+          <option value="freelancer">Freelancer</option>
+        </select>
+      </div>
+    </header>
+
+    <main id="thread" class="thread" aria-live="polite">
+      <section id="welcome" class="welcome">
+        <h2>What money question is bugging you?</h2>
+        <p>Ask about salary, SIP, UPI scams, credit cards or tax. You get a simple answer, a rupee example and one action for today.</p>
+
+        <div class="chips">
+          <button type="button" class="chip">CTC vs in-hand salary</button>
+          <button type="button" class="chip">What is a SIP?</button>
+          <button type="button" class="chip">How to split my salary?</button>
+          <button type="button" class="chip">Is UPI safe?</button>
+          <button type="button" class="chip">Credit card, good or bad?</button>
+          <button type="button" class="chip">How much emergency fund?</button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="composer">
+      <p id="status" class="status" role="status"></p>
+
+      <form id="form" autocomplete="off">
+        <label for="q" class="sr">Your money question</label>
+        <input id="q" maxlength="300" placeholder="Ask a money question…" />
+        <button class="send" type="submit" id="go">Ask</button>
+      </form>
+
+      <p class="note">Each question is answered fresh – no history is sent or saved. Never type PINs, OTPs or bank details. General education, not financial advice.</p>
+    </footer>
+  </div>
+
+  <script src="kb.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
