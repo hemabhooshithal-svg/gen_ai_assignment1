@@ -1,16 +1,9 @@
 
- // Budget Buddy – single-page, no-login, stateless chatbot for GitHub Pages.
- // Each request carries ONLY the current question. Nothing is stored.
-
- // ===================== CONFIG – EDIT THIS BLOCK ONLY =====================
 const CONFIG = {
-  // Recommended: URL of your Cloudflare Worker. Keep the API key secret there.
   PROXY_URL: '',
-  // Demo only: a key in browser JavaScript is public. Leave empty if using PROXY_URL.
   API_KEY: '',
   MODEL: 'claude-sonnet-5-5',
 };
-// ==========================================================================
 
 const $ = (s) => document.querySelector(s);
 const state = { lastQuestion: '' };
@@ -150,8 +143,6 @@ function offlineAnswer(q, mode) {
   };
 }
 
-// ---------- UI (textContent only: model output is never injected as HTML) ----------
-
 function el(tag, cls, text) {
   const n = document.createElement(tag);
 
@@ -224,19 +215,17 @@ async function ask(question, mode = 'normal') {
 
   const settings = {
     profile: $('#profile').value,
-    lang: $('#lang').value,
+    lang: 'English',
   };
 
   state.lastQuestion = q;
 
-  // Clear the status area, including the live-AI configuration warning.
   $('#status').textContent = '';
 
   $('#welcome')?.remove();
 
   const thread = $('#thread');
 
-  // Only the latest answer keeps its action buttons.
   thread.querySelectorAll('.acts').forEach((a) => a.remove());
 
   const label =
@@ -262,8 +251,6 @@ async function ask(question, mode = 'normal') {
   } catch (err) {
     live = false;
     res = offlineAnswer(q, mode);
-
-    // Keep the status area clear instead of showing the configuration warning.
     $('#status').textContent = '';
   }
 
